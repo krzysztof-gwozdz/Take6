@@ -3,7 +3,7 @@
 internal class Game
 {
     private readonly Player[] _players;
-    private readonly CardRow[] _rows;
+    private readonly CardRow[] _cardRows;
     private CardRow _playedCards;
     private uint _tour;
 
@@ -12,7 +12,7 @@ internal class Game
         _players = players;
         foreach (var player in _players)
             player.ResetPoints();
-        _rows = Enumerable.Range(0, 4).Select(_ => new CardRow()).ToArray();
+        _cardRows = Enumerable.Range(0, 4).Select(_ => new CardRow()).ToArray();
         _playedCards = new CardRow();
     }
 
@@ -24,15 +24,15 @@ internal class Game
             do
             {
                 _tour++;
-                var cardWithPlayers = _players.Select(player => (card: player.PlayACard(), player)).OrderBy(cardWithPlayer => cardWithPlayer.card.Value).ToArray();
+                var cardWithPlayers = _players.Select(player => (card: player.PlayACard(_cardRows), player)).OrderBy(cardWithPlayer => cardWithPlayer.card.Value).ToArray();
                 _playedCards = new CardRow(cardWithPlayers.Select(cardWithPlayer => cardWithPlayer.card).ToArray());
                 foreach (var cardWithPlayer in cardWithPlayers)
                 {
                     var (card, player) = cardWithPlayer;
-                    var cardRow = _rows.Where(row => row.LastCard.Value < cardWithPlayer.card.Value).MaxBy(row => row.LastCard.Value);
+                    var cardRow = _cardRows.Where(row => row.LastCard.Value < cardWithPlayer.card.Value).MaxBy(row => row.LastCard.Value);
                     if (cardRow is null)
                     {
-                        cardRow = player.ChooseCardRowToTake(_rows);
+                        cardRow = player.ChooseCardRowToTake(_cardRows);
                         player.TakeCardRow(cardRow);
                     }
 
@@ -61,7 +61,7 @@ internal class Game
     {
         _tour = 0;
         var cards = Cards.FullSet().Shuffle();
-        foreach (var row in _rows)
+        foreach (var row in _cardRows)
         {
             row.Clear();
             row.Add(cards[0]);
@@ -86,7 +86,7 @@ internal class Game
         }
 
         Console.Write(Environment.NewLine);
-        foreach (var row in _rows)
+        foreach (var row in _cardRows)
         {
             DisplayCardRow(row);
             Console.Write(Environment.NewLine);

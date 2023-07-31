@@ -7,11 +7,10 @@ internal class CardRow : List<Card>
     public CardRow(params Card[] cards) :base(cards.OrderBy(card => card.Value))
     {
     }
-
-    public Card TakeLastCard()
-    {
-        var card = LastCard;
-        Remove(card);
-        return card;
-    }
+    
+    public Card Random() => this.OrderBy(_ => Guid.NewGuid()).First();
+    
+    public Card Highest() => this.OrderBy(card => card.Value).Last();
+    
+    public Card Lowest() => this.OrderBy(card => card.Value).First();
 }
