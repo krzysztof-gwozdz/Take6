@@ -1,14 +1,21 @@
-﻿using Take6.Tests.FourPlayers;
+﻿using System.Diagnostics;
 
 namespace Take6;
 
 public static class Program
 {
     public static void Main()
-    { 
-        new FourPlayersTest.RandomStrategy().Run();
-        new FourPlayersTest.FourTheHighestCardStrategy().Run();
-        new FourPlayersTest.FourTheLowestCardStrategy().Run();
-        new FourPlayersTest.TwoTheHighestCardStrategyVsTwoTheLowestCardStrategy().Run();
+    {
+        var stopwatch = Stopwatch.StartNew();
+        TestCases.All();
+        stopwatch.Stop();
+        PrintTimeInfo(stopwatch);
+    }
+
+    private static void PrintTimeInfo(Stopwatch stopwatch)
+    {
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine($"{Environment.NewLine}All tests take: {stopwatch.ElapsedMilliseconds} ms");
+        Console.ResetColor();
     }
 }

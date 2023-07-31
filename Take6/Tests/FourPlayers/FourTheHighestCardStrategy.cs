@@ -6,10 +6,10 @@ internal abstract partial class FourPlayersTest
     {
         protected override Player[] GetPlayers() => new[]
         {
-            new Player("Player 1", new PlayTheHighestCardStrategy()),
-            new Player("Player 2", new PlayTheHighestCardStrategy()),
-            new Player("Player 3", new PlayTheHighestCardStrategy()),
-            new Player("Player 4", new PlayTheHighestCardStrategy())
+            new Player("The Highest 1", new PlayTheHighestCardStrategy()),
+            new Player("The Highest 2", new PlayTheHighestCardStrategy()),
+            new Player("The Highest 3", new PlayTheHighestCardStrategy()),
+            new Player("The Highest 4", new PlayTheHighestCardStrategy())
         };
     }
 }

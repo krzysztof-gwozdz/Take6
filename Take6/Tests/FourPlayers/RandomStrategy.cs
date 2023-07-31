@@ -4,6 +4,12 @@ internal abstract partial class FourPlayersTest
 {
     internal class RandomStrategy : Test
     {
-        protected override Player[] GetPlayers() => Enumerable.Range(0, 4).Select(x => new Player($"Player {x}", new PlayRandomCardStrategy())).ToArray();
+        protected override Player[] GetPlayers() => new[]
+        {
+            new Player("Random 1", new PlayRandomCardStrategy()),
+            new Player("Random 2", new PlayRandomCardStrategy()),
+            new Player("Random 3", new PlayRandomCardStrategy()),
+            new Player("Random 4", new PlayRandomCardStrategy())
+        };
     }
 }

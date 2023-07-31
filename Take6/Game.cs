@@ -24,11 +24,12 @@ internal class Game
             do
             {
                 _tour++;
-                var cardWithPlayers = _players.Select(player => (card: player.PlayACard(_cardRows), player)).OrderBy(cardWithPlayer => cardWithPlayer.card.Value).ToArray();
+                var cardWithPlayers = _players.Select(player => (card: player.PlayACard(_cardRows), playerName: player.Name)).OrderBy(cardWithPlayer => cardWithPlayer.card.Value).ToArray();
                 _playedCards = new CardRow(cardWithPlayers.Select(cardWithPlayer => cardWithPlayer.card).ToArray());
                 foreach (var cardWithPlayer in cardWithPlayers)
                 {
-                    var (card, player) = cardWithPlayer;
+                    var card = cardWithPlayer.card;
+                    var player = _players.Single(player => player.Name == cardWithPlayer.playerName);
                     var cardRow = _cardRows.Where(row => row.LastCard.Value < cardWithPlayer.card.Value).MaxBy(row => row.LastCard.Value);
                     if (cardRow is null)
                     {
