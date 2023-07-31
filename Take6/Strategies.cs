@@ -7,15 +7,15 @@ interface IPlayCardStrategy
 
 internal class PlayRandomCardStrategy : IPlayCardStrategy
 {
-    public Card PlayCard(Player player, CardRow[] cardRows) => player.Hand.Random();
+    public Card PlayCard(Player player, CardRow[] cardRows) => player.Hand.Random;
 }
 
 internal class PlayHighestCardStrategy : IPlayCardStrategy
 {
-    public Card PlayCard(Player player, CardRow[] cardRows) => player.Hand.Highest();
+    public Card PlayCard(Player player, CardRow[] cardRows) => player.Hand.Highest;
 }
 
 internal class PlayLowestCardStrategy : IPlayCardStrategy
 {
-    public Card PlayCard(Player player, CardRow[] cardRows) => player.Hand.Lowest();
+    public Card PlayCard(Player player, CardRow[] cardRows) => player.Hand.Lowest;
 }
