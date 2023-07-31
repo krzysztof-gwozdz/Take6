@@ -26,7 +26,12 @@ internal class Player
 
     public void SetNewHand(CardRow cards) => Hand = cards;
 
-    public Card PlayACard(CardRow[] cardRows) => _playACardStrategy.PlayACard(this, cardRows);
+    public Card PlayACard(CardRow[] cardRows)
+    {
+        var card = _playACardStrategy.PlayACard(this, cardRows);
+        Hand.Remove(card);
+        return card;
+    }
 
     public CardRow ChooseCardRowToTake(CardRow[] cardRows) => cardRows[0];
     
