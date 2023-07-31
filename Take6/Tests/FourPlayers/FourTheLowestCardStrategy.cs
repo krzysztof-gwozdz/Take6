@@ -1,6 +1,6 @@
 ﻿namespace Take6.Tests.FourPlayers;
 
-internal partial class FourPlayersTest
+internal abstract partial class FourPlayersTest
 {
     internal class FourTheLowestCardStrategy : Test
     {

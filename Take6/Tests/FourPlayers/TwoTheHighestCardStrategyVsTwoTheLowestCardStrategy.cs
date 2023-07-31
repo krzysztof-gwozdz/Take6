@@ -1,15 +1,15 @@
 ﻿namespace Take6.Tests.FourPlayers;
 
-internal partial class FourPlayersTest
+internal abstract partial class FourPlayersTest
 {
     internal class TwoTheHighestCardStrategyVsTwoTheLowestCardStrategy : Test
     {
         protected override Player[] GetPlayers() => new[]
         {
-            new Player("Player 1 - TheHighest", new PlayTheHighestCardStrategy()),
-            new Player("Player 2 - TheHighest", new PlayTheHighestCardStrategy()),
-            new Player("Player 3 - TheLowest", new PlayTheLowestCardStrategy()),
-            new Player("Player 4 - TheLowest", new PlayTheLowestCardStrategy())
+            new Player("Player 1 - The Highest", new PlayTheHighestCardStrategy()),
+            new Player("Player 2 - The Highest", new PlayTheHighestCardStrategy()),
+            new Player("Player 3 - The Lowest", new PlayTheLowestCardStrategy()),
+            new Player("Player 4 - The Lowest", new PlayTheLowestCardStrategy())
         };
     }
 }
