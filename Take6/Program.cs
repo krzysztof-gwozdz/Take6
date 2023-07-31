@@ -1,12 +1,14 @@
-﻿namespace Take6;
+﻿using Take6.Tests.FourPlayers;
+
+namespace Take6;
 
 public static class Program
 {
     public static void Main()
-    {
-        // Tests.BaseTest();
-        Tests.FourPlayersTest_TheHighestCardStrategy();
-        Tests.FourPlayersTest_TwoTheLowestCardStrategy();
-        Tests.FourPlayersTest_TwoTheHighestCardStrategy_vs_TwoTheLowestCardStrategy();
+    { 
+        new FourPlayersTest.RandomStrategy().Run();
+        new FourPlayersTest.FourTheHighestCardStrategy().Run();
+        new FourPlayersTest.FourTheLowestCardStrategy().Run();
+        new FourPlayersTest.TwoTheHighestCardStrategyVsTwoTheLowestCardStrategy().Run();
     }
 }
