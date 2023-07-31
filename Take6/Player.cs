@@ -26,7 +26,7 @@ internal class Player
 
     public void SetNewHand(CardRow cards) => Hand = cards;
 
-    public Card PlayCard(CardRow[] cardRows)
+    public ushort PlayCard(CardRow[] cardRows)
     {
         var card = _playCardStrategy.PlayCard(this, cardRows);
         Hand.Remove(card);
@@ -39,9 +39,23 @@ internal class Player
 
     public void TakeCardRow(CardRow cardRow)
     {
-        Points -= cardRow.Sum(card => card.Points);
+        Points -= cardRow.Sum(card => GetPointsForCard(card));
         cardRow.Clear();
     }
+    
+    private static ushort GetPointsForCard(ushort card)
+{
+        if (card == 55)
+            return 7;
+        if (card % 11 == 0)
+            return 5;
+        if (card % 10 == 0)
+            return 3;
+        if (card % 5 == 0)
+            return 2;
+        return 1;
+    }
+    
 }
 
 internal class GameResult

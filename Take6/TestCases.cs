@@ -16,6 +16,7 @@ public static class TestCases
             new FourPlayersTest.OneLowestCardStrategyVsThreeHighestCardStrategy(),
             new FourPlayersTest.OneHighestCardStrategyVsThreeRandomCardStrategy(),
             new FourPlayersTest.OneLowestCardStrategyVsThreeRandomCardStrategy(),
+            new FourPlayersTest.LowestDifferenceCardStrategyVsThreeLowestCardStrategy()
         };
         foreach (var test in tests)
             test.Run();

@@ -24,13 +24,13 @@ internal class Game
             do
             {
                 _tour++;
-                var cardWithPlayers = _players.Select(player => (card: player.PlayCard(_cardRows), playerName: player.Name)).OrderBy(cardWithPlayer => cardWithPlayer.card.Value).ToArray();
+                var cardWithPlayers = _players.Select(player => (card: player.PlayCard(_cardRows), playerName: player.Name)).OrderBy(cardWithPlayer => cardWithPlayer.card).ToArray();
                 _playedCards = new CardRow(cardWithPlayers.Select(cardWithPlayer => cardWithPlayer.card).ToArray());
                 foreach (var cardWithPlayer in cardWithPlayers)
                 {
                     var card = cardWithPlayer.card;
                     var player = _players.Single(player => player.Name == cardWithPlayer.playerName);
-                    var cardRow = _cardRows.Where(row => row.LastCard.Value < cardWithPlayer.card.Value).MaxBy(row => row.LastCard.Value);
+                    var cardRow = _cardRows.Where(row => row.LastCard < cardWithPlayer.card).MaxBy(row => row.LastCard);
                     if (cardRow is null)
                     {
                         cardRow = player.ChooseCardRowToTake(_cardRows);
@@ -108,19 +108,19 @@ internal class Game
             }
         }
 
-        void DisplayCard(Card card)
+        void DisplayCard(ushort card)
         {
-            if (card.Value == 55)
+            if (card == 55)
                 Console.ForegroundColor = ConsoleColor.Red;
-            else if (card.Value % 11 == 0)
+            else if (card % 11 == 0)
                 Console.ForegroundColor = ConsoleColor.Yellow;
-            else if (card.Value % 10 == 0)
+            else if (card % 10 == 0)
                 Console.ForegroundColor = ConsoleColor.Green;
-            else if (card.Value % 5 == 0)
+            else if (card % 5 == 0)
                 Console.ForegroundColor = ConsoleColor.Blue;
             else
                 Console.ForegroundColor = ConsoleColor.White;
-            Console.Write($"[{card.Value:###}]");
+            Console.Write($"[{card:###}]");
             Console.ResetColor();
         }
     }

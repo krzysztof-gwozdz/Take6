@@ -1,16 +1,15 @@
 ﻿namespace Take6;
 
-internal class CardRow : List<Card>
+internal class CardRow : List<ushort>
 {
-
-    public CardRow(params Card[] cards) :base(cards.OrderBy(card => card.Value))
+    public CardRow(params ushort[] cards) : base(cards.OrderBy(card => card))
     {
     }
-    
-    public Card LastCard => this.Last();
-    public Card Random => this.OrderBy(_ => Guid.NewGuid()).First();
-    
-    public Card Highest => this.OrderBy(card => card.Value).Last();
-    
-    public Card Lowest => this.OrderBy(card => card.Value).First();
+
+    public ushort LastCard => this.Last();
+    public ushort Random => this.MinBy(_ => Guid.NewGuid());
+
+    public ushort Highest => this.MaxBy(card => card);
+
+    public ushort Lowest => this.MinBy(card => card);
 }

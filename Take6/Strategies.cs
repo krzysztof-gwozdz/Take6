@@ -2,35 +2,35 @@
 
 interface IPlayCardStrategy
 {
-    Card PlayCard(Player player, CardRow[] cardRows);
+    ushort PlayCard(Player player, CardRow[] cardRows);
 }
 
 internal class PlayRandomCardStrategy : IPlayCardStrategy
 {
-    public Card PlayCard(Player player, CardRow[] cardRows) => player.Hand.Random;
+    public ushort PlayCard(Player player, CardRow[] cardRows) => player.Hand.Random;
 }
 
 internal class PlayHighestCardStrategy : IPlayCardStrategy
 {
-    public Card PlayCard(Player player, CardRow[] cardRows) => player.Hand.Highest;
+    public ushort PlayCard(Player player, CardRow[] cardRows) => player.Hand.Highest;
 }
 
 internal class PlayLowestCardStrategy : IPlayCardStrategy
 {
-    public Card PlayCard(Player player, CardRow[] cardRows) => player.Hand.Lowest;
+    public ushort PlayCard(Player player, CardRow[] cardRows) => player.Hand.Lowest;
 }
 
 internal class PlayCardWithLowestDifferenceStrategy : IPlayCardStrategy
 {
-    public Card PlayCard(Player player, CardRow[] cardRows)
+    public ushort PlayCard(Player player, CardRow[] cardRows)
     {
         var cardToPlay = player.Hand.Random;
-        var lastCardValues = cardRows.Select(cardRow => cardRow.LastCard.Value).ToHashSet();
+        var lastCardValues = cardRows.Select(cardRow => cardRow.LastCard).ToHashSet();
         var smallestDifference = 103;
-        var cards = player.Hand.Where(cardFromHand => lastCardValues.Any(cardFromRow => cardFromRow < cardFromHand.Value));
+        var cards = player.Hand.Where(cardFromHand => lastCardValues.Any(cardFromRow => cardFromRow < cardFromHand));
         foreach (var card in cards)
         {
-            var difference = lastCardValues.Min(cardFromRow => Math.Abs(cardFromRow - card.Value));
+            var difference = lastCardValues.Min(cardFromRow => Math.Abs(cardFromRow - card));
             if (difference < smallestDifference)
             {
                 smallestDifference = difference;

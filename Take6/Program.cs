@@ -7,7 +7,7 @@ public static class Program
     public static void Main()
     {
         var stopwatch = Stopwatch.StartNew();
-        TestCases.LowestDifference();
+        TestCases.All();
         stopwatch.Stop();
         PrintTimeInfo(stopwatch);
     }
