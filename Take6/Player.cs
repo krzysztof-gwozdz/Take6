@@ -5,15 +5,19 @@ internal class Player
     public string Name { get; }
     public CardRow Hand { get; private set; }
     public int Points { get; private set; }
+    
+    public int Wins = 0;
 
-    public bool Lost => Points <= 0;
+    public int Losses = 0;
 
     public Player(string name)
     {
         Name = name;
-        Hand = new CardRow();
-        Points = 66;
+        Hand = new CardRow();   
+        ResetPoints();
     }
+
+    public void ResetPoints() => Points = 66;
 
     public void SetNewHand(CardRow cards) => Hand = cards;
 

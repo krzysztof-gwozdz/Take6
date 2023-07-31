@@ -10,6 +10,8 @@ internal class Game
     public Game(Player[] players)
     {
         _players = players;
+        foreach (var player in _players)
+            player.ResetPoints();
         _rows = Enumerable.Range(0, 4).Select(_ => new CardRow()).ToArray();
         _playedCards = new CardRow();
     }
@@ -35,7 +37,7 @@ internal class Game
                     }
 
                     if (cardRow.Count == 5)
-                    {
+                    {   
                         player.TakeCardRow(cardRow);
                     }
 
@@ -43,8 +45,12 @@ internal class Game
                     _playedCards.Remove(card);
                 }
             } while (_tour < 10);
-        } while (!_players.Any(player => player.Lost));
-        Display();
+        } while (!_players.Any(player => player.Points <= 0));
+
+        var winner = _players.OrderBy(player => player.Points).First();
+        winner.Wins++;
+        foreach (var looser in _players.Where(player => player != winner))
+            looser.Losses++;
     }
 
     private void SetupRound()
