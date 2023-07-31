@@ -9,13 +9,13 @@ public static class TestCases
         var tests = new Test[]
         {
             new FourPlayersTest.RandomStrategy(),
-            new FourPlayersTest.FourTheHighestCardStrategy(),
-            new FourPlayersTest.FourTheLowestCardStrategy(),
-            new FourPlayersTest.TwoTheHighestCardStrategyVsTwoTheLowestCardStrategy(),
-            new FourPlayersTest.OneTheHighestCardStrategyVsThreeTheLowestCardStrategy(),
-            new FourPlayersTest.OneTheLowestCardStrategyVsThreeTheHighestCardStrategy(),
-            new FourPlayersTest.OneTheHighestCardStrategyVsThreeRandomCardStrategy(),
-            new FourPlayersTest.OneTheLowestCardStrategyVsThreeRandomCardStrategy(),
+            new FourPlayersTest.FourHighestCardStrategy(),
+            new FourPlayersTest.FourLowestCardStrategy(),
+            new FourPlayersTest.TwoHighestCardStrategyVsTwoLowestCardStrategy(),
+            new FourPlayersTest.OneHighestCardStrategyVsThreeLowestCardStrategy(),
+            new FourPlayersTest.OneLowestCardStrategyVsThreeHighestCardStrategy(),
+            new FourPlayersTest.OneHighestCardStrategyVsThreeRandomCardStrategy(),
+            new FourPlayersTest.OneLowestCardStrategyVsThreeRandomCardStrategy(),
         };
         foreach (var test in tests)
             test.Run();

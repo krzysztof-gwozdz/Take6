@@ -2,11 +2,11 @@
 
 internal abstract partial class FourPlayersTest
 {
-    internal class OneTheHighestCardStrategyVsThreeRandomCardStrategy : Test
+    internal class OneLowestCardStrategyVsThreeRandomCardStrategy : Test
     {
         protected override Player[] GetPlayers() => new[]
         {
-            new Player("The Highest", new PlayTheHighestCardStrategy()),
+            new Player("Lowest", new PlayLowestCardStrategy()),
             new Player("Random 1", new PlayRandomCardStrategy()),
             new Player("Random 2", new PlayRandomCardStrategy()),
             new Player("Random 3", new PlayRandomCardStrategy())

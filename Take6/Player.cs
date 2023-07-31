@@ -2,7 +2,7 @@
 
 internal class Player
 {
-    private readonly IPlayACardStrategy _playACardStrategy;
+    private readonly IPlayCardStrategy _playCardStrategy;
     public string Name { get; }
     public CardRow Hand { get; private set; }
     public int Points { get; private set; }
@@ -13,9 +13,9 @@ internal class Player
 
     public int Losses => GameResults.Count(gameResult => !gameResult.Won); 
         
-    public Player(string name, IPlayACardStrategy playACardStrategy)
+    public Player(string name, IPlayCardStrategy playCardStrategy)
     {
-        _playACardStrategy = playACardStrategy;
+        _playCardStrategy = playCardStrategy;
         Name = name;
         Hand = new CardRow();   
         ResetPoints();
@@ -26,9 +26,9 @@ internal class Player
 
     public void SetNewHand(CardRow cards) => Hand = cards;
 
-    public Card PlayACard(CardRow[] cardRows)
+    public Card PlayCard(CardRow[] cardRows)
     {
-        var card = _playACardStrategy.PlayACard(this, cardRows);
+        var card = _playCardStrategy.PlayCard(this, cardRows);
         Hand.Remove(card);
         return card;
     }

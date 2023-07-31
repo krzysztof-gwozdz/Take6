@@ -1,21 +1,21 @@
 ﻿namespace Take6;
 
-interface IPlayACardStrategy
+interface IPlayCardStrategy
 {
-    Card PlayACard(Player player, CardRow[] cardRows);
+    Card PlayCard(Player player, CardRow[] cardRows);
 }
 
-internal class PlayRandomCardStrategy : IPlayACardStrategy
+internal class PlayRandomCardStrategy : IPlayCardStrategy
 {
-    public Card PlayACard(Player player, CardRow[] cardRows) => player.Hand.Random();
+    public Card PlayCard(Player player, CardRow[] cardRows) => player.Hand.Random();
 }
 
-internal class PlayTheHighestCardStrategy : IPlayACardStrategy
+internal class PlayHighestCardStrategy : IPlayCardStrategy
 {
-    public Card PlayACard(Player player, CardRow[] cardRows) => player.Hand.Highest();
+    public Card PlayCard(Player player, CardRow[] cardRows) => player.Hand.Highest();
 }
 
-internal class PlayTheLowestCardStrategy : IPlayACardStrategy
+internal class PlayLowestCardStrategy : IPlayCardStrategy
 {
-    public Card PlayACard(Player player, CardRow[] cardRows) => player.Hand.Lowest();
+    public Card PlayCard(Player player, CardRow[] cardRows) => player.Hand.Lowest();
 }
