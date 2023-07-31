@@ -24,7 +24,7 @@ internal class Game
             do
             {
                 _tour++;
-                var cardWithPlayers = _players.Select(player => (card: player.PlayACard(), player)).ToArray();
+                var cardWithPlayers = _players.Select(player => (card: player.PlayACard(), player)).OrderBy(cardWithPlayer => cardWithPlayer.card.Value).ToArray();
                 _playedCards = new CardRow(cardWithPlayers.Select(cardWithPlayer => cardWithPlayer.card).ToArray());
                 foreach (var cardWithPlayer in cardWithPlayers)
                 {
