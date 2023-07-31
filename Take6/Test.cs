@@ -41,21 +41,22 @@ internal abstract class Test
 
     private static void PrintPlayersStats(Player[] players)
     {
-        const double tolerance = 2.5;
-        var maxWins = players.Max(player => player.Wins) * 100.0 / NumberOfGames;
+        const double tolerance = 0.025;
+        var maxWins = (double)players.Max(player => player.Wins) / NumberOfGames;
+        Console.WriteLine($"| {"Player",-13} | {"Wins",-6} | {"Points",-6} |");
         foreach (var player in players)
         {
-            var winsPercentage = player.Wins * 100.0 / NumberOfGames;
+            var winsPercentage = (double)player.Wins / NumberOfGames;
             if (winsPercentage > maxWins - tolerance)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
             }
 
-            Console.WriteLine($"{player.Name} {winsPercentage}% {player.GameResults.Average(gameResult => gameResult.Points):##.##}");
+            Console.WriteLine($"| {player.Name,-13} | {winsPercentage:00.00%} | {player.GameResults.Average(gameResult => gameResult.Points): 00.00;-00.00} |");
             Console.ResetColor();
         }
     }
 
-    private static string ToSentenceCase(string str) => 
+    private static string ToSentenceCase(string str) =>
         Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + " " + char.ToLower(m.Value[1]));
 }
