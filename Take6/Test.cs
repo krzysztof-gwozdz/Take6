@@ -14,7 +14,7 @@ internal abstract class Test
     
     protected abstract Player[] GetPlayers();
     
-    private static void PrintTestName() => Console.WriteLine(new System.Diagnostics.StackTrace().GetFrame(1)?.GetMethod()?.Name);
+    private void PrintTestName() => Console.WriteLine(Environment.NewLine + GetType().Name);
 
     private static void Play(Player[] players)
     {
