@@ -20,4 +20,14 @@ public static class TestCases
         foreach (var test in tests)
             test.Run();
     }
+    
+    public static void LowestDifference()
+    {
+        var tests = new Test[]
+        {
+            new FourPlayersTest.LowestDifferenceCardStrategyVsThreeLowestCardStrategy()
+        };
+        foreach (var test in tests)
+            test.Run();
+    }
 }
