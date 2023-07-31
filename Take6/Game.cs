@@ -46,11 +46,15 @@ internal class Game
                 }
             } while (_tour < 10);
         } while (!_players.Any(player => player.Points <= 0));
+        AddPlayerStats();
+    }
 
+    private void AddPlayerStats()
+    {
         var winner = _players.OrderBy(player => player.Points).First();
-        winner.Wins++;
+        winner.AddGameResult(true);
         foreach (var looser in _players.Where(player => player != winner))
-            looser.Losses++;
+            looser.AddGameResult(false);
     }
 
     private void SetupRound()

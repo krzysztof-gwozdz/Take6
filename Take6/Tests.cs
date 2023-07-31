@@ -11,6 +11,6 @@ internal class Tests
         for (var i = 0; i < NumberOfGames; i++)
             new Game(players).Play();
         foreach (var player in players)
-            Console.WriteLine($"{player.Name} {player.Wins * 100.0 / NumberOfGames}%");
+            Console.WriteLine($"{player.Name} {player.Wins * 100.0 / NumberOfGames}% {player.GameResults.Average(gameResult => gameResult.Points):##.##}");
     }
 }
