@@ -2,15 +2,13 @@
 
 internal class Game
 {
-    private string Name { get; }
     private readonly Player[] _players;
     private readonly CardRow[] _rows;
     private CardRow _playedCards;
     private uint _tour;
 
-    public Game(string name, Player[] players)
+    public Game(Player[] players)
     {
-        Name = name;
         _players = players;
         _rows = Enumerable.Range(0, 4).Select(_ => new CardRow()).ToArray();
         _playedCards = new CardRow();
@@ -70,7 +68,6 @@ internal class Game
     private void Display()
     {
         Console.Clear();
-        Console.WriteLine($"Game: {Name}");
         foreach (var player in _players)
         {
             Console.Write($"{player.Name} [{player.Points}] ");
