@@ -37,7 +37,7 @@ internal class Game
                         player.TakeCardRow(cardRow);
                     }
 
-                    if (cardRow.Count == 5)
+                    if (cardRow.ItsFull)
                     {
                         player.TakeCardRow(cardRow);
                     }

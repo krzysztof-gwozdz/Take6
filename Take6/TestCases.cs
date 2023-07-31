@@ -6,7 +6,7 @@ public static class TestCases
 {
     public static void All()
     {
-        var tests = new Test[]
+        Run(new Test[]
         {
             new FourPlayersTest.RandomStrategy(),
             new FourPlayersTest.FourHighestCardStrategy(),
@@ -17,17 +17,28 @@ public static class TestCases
             new FourPlayersTest.OneHighestCardStrategyVsThreeRandomCardStrategy(),
             new FourPlayersTest.OneLowestCardStrategyVsThreeRandomCardStrategy(),
             new FourPlayersTest.LowestDifferenceCardStrategyVsThreeLowestCardStrategy()
-        };
-        foreach (var test in tests)
-            test.Run();
+        });
     }
-    
+
     public static void LowestDifference()
     {
-        var tests = new Test[]
+        Run(new Test[]
         {
-            new FourPlayersTest.LowestDifferenceCardStrategyVsThreeLowestCardStrategy()
-        };
+            new FourPlayersTest.LowestDifferenceCardStrategyVsThreeLowestCardStrategy(),
+            new FourPlayersTest.OneLowestDifferenceAndAvoidFullRowsCardStrategyVsThreeLowestCardStrategy()
+        });
+    }
+    
+    public static void Mixes()
+    {
+        Run(new Test[]
+        {
+            new FourPlayersTest.MixStrategy1()
+        });
+    }
+
+    private static void Run(Test[] tests)
+    {
         foreach (var test in tests)
             test.Run();
     }

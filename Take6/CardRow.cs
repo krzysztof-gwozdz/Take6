@@ -7,9 +7,11 @@ internal class CardRow : List<ushort>
     }
 
     public ushort LastCard => this.Last();
-    public ushort Random => this.MinBy(_ => Guid.NewGuid());
 
-    public ushort Highest => this.MaxBy(card => card);
+    public ushort RandomCard => this.MinBy(_ => Guid.NewGuid());
 
-    public ushort Lowest => this.MinBy(card => card);
+    public ushort HighestCard => this.MaxBy(card => card);
+
+    public ushort LowestCard => this.MinBy(card => card);
+    public bool ItsFull => Count == 5;
 }

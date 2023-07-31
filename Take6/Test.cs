@@ -43,8 +43,8 @@ internal abstract class Test
     {
         const double tolerance = 0.025;
         var maxWins = (double)players.Max(player => player.Wins) / NumberOfGames;
-        Console.WriteLine($"| {"Player",-17} | {"Wins",-6} | {"Points",-6} |");
-        foreach (var player in players)
+        Console.WriteLine($"| {"Player",-20} | {"Wins",-6} | {"Points",-6} |");
+        foreach (var player in players.OrderBy(player => player.Wins))
         {
             var winsPercentage = (double)player.Wins / NumberOfGames;
             if (winsPercentage > maxWins - tolerance)
@@ -52,7 +52,7 @@ internal abstract class Test
                 Console.ForegroundColor = ConsoleColor.Green;
             }
 
-            Console.WriteLine($"| {player.Name,-17} | {winsPercentage:00.00%} | {player.GameResults.Average(gameResult => gameResult.Points): 00.00;-00.00} |");
+            Console.WriteLine($"| {player.Name,-20} | {winsPercentage:00.00%} | {player.GameResults.Average(gameResult => gameResult.Points): 00.00;-00.00} |");
             Console.ResetColor();
         }
     }
