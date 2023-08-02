@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
 
-namespace Take6;
+namespace Take6.Tests;
 
 internal abstract class Test
 {

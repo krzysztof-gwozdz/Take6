@@ -1,4 +1,6 @@
-﻿namespace Take6;
+﻿using Take6.Strategies;
+
+namespace Take6;
 
 internal class Player
 {

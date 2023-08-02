@@ -1,4 +1,6 @@
-﻿namespace Take6.Tests.FourPlayers;
+﻿using Take6.Strategies;
+
+namespace Take6.Tests.FourPlayers;
 
 internal abstract partial class FourPlayersTest
 {
@@ -6,10 +8,11 @@ internal abstract partial class FourPlayersTest
     {
         protected override Player[] GetPlayers() => new[]
         {
-            new Player("Lowest Difference", new PlayCardWithLowestDifferenceStrategy()),
+            // new Player("Lowest Difference", new PlayCardWithLowestDifferenceStrategy()),
             new Player("Lowest Difference +", new PlayCardWithLowestDifferenceAndAvoidFullRowsStrategy()),
             new Player("Highest", new PlayHighestCardStrategy()),
-            new Player("Lowest", new PlayLowestCardStrategy()),
+            new Player("Highest and Lowest", new PlayHighestAndLowestCardAlternatelyStrategy()),
+            new Player("Lowest", new PlayLowestCardStrategy())
         };
     }
 }

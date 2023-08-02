@@ -1,4 +1,6 @@
-﻿namespace Take6.Tests.FourPlayers;
+﻿using Take6.Strategies;
+
+namespace Take6.Tests.FourPlayers;
 
 internal abstract partial class FourPlayersTest
 {

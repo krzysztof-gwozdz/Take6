@@ -1,4 +1,5 @@
-﻿using Take6.Tests.FourPlayers;
+﻿using Take6.Tests;
+using Take6.Tests.FourPlayers;
 
 namespace Take6;
 
@@ -16,7 +17,9 @@ public static class TestCases
             new FourPlayersTest.OneLowestCardStrategyVsThreeHighestCardStrategy(),
             new FourPlayersTest.OneHighestCardStrategyVsThreeRandomCardStrategy(),
             new FourPlayersTest.OneLowestCardStrategyVsThreeRandomCardStrategy(),
-            new FourPlayersTest.LowestDifferenceCardStrategyVsThreeLowestCardStrategy()
+            new FourPlayersTest.LowestDifferenceCardStrategyVsThreeLowestCardStrategy(),
+            new FourPlayersTest.OneLowestDifferenceAndAvoidFullRowsCardStrategyVsThreeLowestCardStrategy(),
+            new FourPlayersTest.MixStrategy1()
         });
     }
 
