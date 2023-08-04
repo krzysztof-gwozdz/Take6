@@ -10,8 +10,10 @@ internal class CardRow : List<ushort>
 
     public ushort RandomCard => this.MinBy(_ => Guid.NewGuid());
 
-    public ushort HighestCard => this.MaxBy(card => card);
-
     public ushort LowestCard => this.MinBy(card => card);
+    
+    public ushort MiddleCard => this.Skip(Count / 2).First();
+
+    public ushort HighestCard => this.MaxBy(card => card);
     public bool ItsFull => Count == 5;
 }
